@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OnStore</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="layout">
+        <header>
+            <div>
+                <h1>OnStore</h1>
+            </div>
+            <div>
+                <form id="search">
+                    <input name="search" type="text" />
+                    <input type="submit" value="S" /> <!--search-->
+                </form>
+                <div id="subNav">
+                    <a href="login.php">Login</a>
+                    <a href="login.php">Cart</a>
+                </div>
+            </div>
+        </header>
+        <nav id="mainNav">
+            <ul>
+                <li> <a href="#">Ноутбуки</a></li>
+                <li> <a href="#">Смартфоны</a></li>
+                <li><a href="#">Элементы</a></li>
+                <li>
+                    <a href="#">Аксессуары</a>
+                    <div>
+                        <a href="#">Часы</a>
+                        <a href="#">Мыши</a>
+                        <a href="#">Клавиатуры</a>
+                    </div>
+                </li>
+                <li><a href="#">Бытовые приборы</a></li>
+            </ul>
+        </nav>
+        <form id="filter">
+            <p id="filTitle">Фильтр</p>
+            <div>
+                <p>Фирмы</p>
+                <ul>
+                    <li><input type="checkbox" name="firm" /><label>Lenovo</label></li>
+                    <li><input type="checkbox" name="firm" /><label>Oppo</label></li>
+                    <li><input type="checkbox" name="firm" /><label>Samsung</label></li>
+                </ul>
+            </div>
+            <div>
+                <p>Colors</p>
+                <ul>
+                    <li><input type="checkbox" name="firm" /><label>Red</label></li>
+                    <li><input type="checkbox" name="firm" /><label>Yellow</label></li>
+                    <li><input type="checkbox" name="firm" /><label>Black</label></li>
+                </ul>
+            </div>
+        </form>
+        <content id="catalogContent">
+            <section>
+                <h4>Hits</h4>
+                <div>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Lenovo A5</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Samsung</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Oppo</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Lenovo A5</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Samsung</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                    <article class="prod">
+                        <a href="#"><img src="/image/prod/phone/1/1.jpg" /></a>
+                        <h3>Oppo</h3>
+                        <p>13 999 р</p>
+                        <button>To cart</button>
+                        <button>Buy</button>
+                    </article>
+                </div>
+            </section>
+        </content>
+        <footer>
+            <ul>
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Some 2</a></li>
+                <li><a href="#">Three</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Link4</a></li>
+                <li><a href="#">Some 5</a></li>
+                <li><a href="#">Six</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>
