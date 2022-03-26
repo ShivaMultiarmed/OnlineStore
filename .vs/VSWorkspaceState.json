@@ -3,8 +3,9 @@
     "",
     "\\engine",
     "\\styles",
-    "\\templates"
+    "\\templates",
+    "\\templates\\blocks"
   ],
-  "SelectedNode": "\\index.php",
+  "SelectedNode": "\\styles\\main.less",
   "PreviewInSolutionExplorer": false
 }
