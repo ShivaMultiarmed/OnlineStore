@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\engine",
+    "\\engine\\classes",
     "\\styles",
     "\\templates",
     "\\templates\\blocks"
   ],
-  "SelectedNode": "\\styles\\main.less",
+  "SelectedNode": "\\engine\\classes\\product.php",
   "PreviewInSolutionExplorer": false
 }

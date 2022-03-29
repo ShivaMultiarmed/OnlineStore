@@ -8,7 +8,7 @@
 			$this -> PageName = $pagename;
 			$this -> Type = $type;
 			$this -> Category = $category;
-			$this -> subCategory = $subcategory;
+			$this -> SubCategory = $subcategory;
 			$this -> Id = $id;
 		}
 
@@ -16,8 +16,20 @@
 		{
 			$pagecontent = file_get_contents("templates/page.html");
 
-			$sections = $this -> createSection();
-			$pagecontent=str_replace("[SECTIONS]", $sections, $pagecontent);
+			switch ($this -> Type) {
+				case "product":
+					require("Engine/classes/Product.php");
+				break;
+				case "subcategory":
+					require("Engine/classes/Prods.php");
+				break;
+				default:		
+
+				break;
+			}
+
+			$sections = $this -> createSection($this -> Type);
+			$pagecontent=str_replace("[THEMAINCONTENT]", $sections, $pagecontent);
 			$pagecontent=str_replace("[MAINNAVCONTENT]", $this -> createMainNav($pagecontent), $pagecontent);
 
 			$this -> PageContent = $pagecontent;
@@ -64,13 +76,15 @@ SQL;
 		
 		}
 
-		public function createSection()
+		public function createSection($type, $subtitle = "") // subtitle is for page like home ("hits", "sale", etc)
 		{
 				$sectionContent = file_get_contents("templates/blocks/section.html");
 
-				$products ="";
+				$Prods = new Prods($this -> SubCategory);
+				$Prods -> createProdsList();	
+				$products = $Prods -> content;
 
-				$sectionContent = str_replace("[PRODUCTS]", $products, $sectionContent);
+				$sectionContent = str_replace("[CONTENT]", $products, $sectionContent);
 				return $sectionContent;
 		}
 		
