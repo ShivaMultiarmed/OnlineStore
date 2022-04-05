@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\engine",
-    "\\engine\\classes",
+    "\\Engine",
+    "\\Engine\\classes",
     "\\styles",
     "\\templates",
     "\\templates\\blocks"
   ],
-  "SelectedNode": "\\engine\\classes\\product.php",
+  "SelectedNode": "\\Engine\\classes\\Prods.php",
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,10 @@
 <?php
+	header("Content-Type: text/html; charset=utf-8");
+
 	require("Engine/Engine.php");
+
+	require("Engine/classes/Product.php");
+	require("Engine/classes/Prods.php");
 
 	$pagename = htmlspecialchars(trim($_GET['page']));
 	$type = htmlspecialchars(trim($_GET['type']));

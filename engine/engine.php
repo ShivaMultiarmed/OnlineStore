@@ -9,6 +9,7 @@
 			$this -> Type = $type;
 			$this -> Category = $category;
 			$this -> SubCategory = $subcategory;
+			$this -> Russian = "Товары";
 			$this -> Id = $id;
 		}
 
@@ -16,20 +17,8 @@
 		{
 			$pagecontent = file_get_contents("templates/page.html");
 
-			switch ($this -> Type) {
-				case "product":
-					require("Engine/classes/Product.php");
-				break;
-				case "subcategory":
-					require("Engine/classes/Prods.php");
-				break;
-				default:		
-
-				break;
-			}
-
-			$sections = $this -> createSection($this -> Type);
-			$pagecontent=str_replace("[THEMAINCONTENT]", $sections, $pagecontent);
+			$sections = $this -> createSection($this -> Type, $this -> SubCategory, $this-> Russian);
+			$pagecontent=str_replace("[SECTIONS]", $sections, $pagecontent);
 			$pagecontent=str_replace("[MAINNAVCONTENT]", $this -> createMainNav($pagecontent), $pagecontent);
 
 			$this -> PageContent = $pagecontent;
@@ -76,15 +65,18 @@ SQL;
 		
 		}
 
-		public function createSection($type, $subtitle = "") // subtitle is for page like home ("hits", "sale", etc)
+		public function createSection($type, $subcategory = "", $russian = "") 
+		// subcategory is also may be used as subtitle in pages without Product catalog
+		// russian is alias for subtitle
 		{
 				$sectionContent = file_get_contents("templates/blocks/section.html");
 
-				$Prods = new Prods($this -> SubCategory);
-				$Prods -> createProdsList();	
-				$products = $Prods -> content;
-
-				$sectionContent = str_replace("[CONTENT]", $products, $sectionContent);
+				$Prods = new Prods($subcategory);
+				$Prods -> createProdsList();
+				$products = $Prods -> Content;
+				
+				$sectionContent = str_replace("[SECTIONTITLE]", "Products", $sectionContent);
+				$sectionContent = str_replace("[SECTIONCONTENT]", $products, $sectionContent);
 				return $sectionContent;
 		}
 		
