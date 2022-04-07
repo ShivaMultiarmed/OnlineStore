@@ -21,7 +21,7 @@
 		function createProdsList() // create a list of prods
 		{
 			global $MySqlI;
-			$sqlGetProds = $MySqlI -> query("SELECT * FROM `" . $this -> SubCategory . "` LIMIT 20;");
+			$sqlGetProds = $MySqlI -> query("SELECT * FROM `" . $this -> SubCategory . "` ORDER BY `id` DESC  LIMIT 20;");
 			// substitude mixers with subcategory variable
 			while ($row = $sqlGetProds -> fetch_assoc())
 			{
