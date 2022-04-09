@@ -3,6 +3,8 @@
 
 	require("Engine/Engine.php");
 
+	require("Engine/classes/Content.php");
+
 	require("Engine/classes/Product.php");
 	require("Engine/classes/Prods.php");
 
@@ -10,9 +12,9 @@
 	$type = htmlspecialchars(trim($_GET['type']));
 	$category = htmlspecialchars(trim($_GET['category']));
 	$subcategory = htmlspecialchars(trim($_GET['subcategory']));
-	$product = htmlspecialchars(trim($_GET['prod']));
+	$id = htmlspecialchars(trim($_GET['id']));
 
-	$Page = new Page($pagename, $type, $category, $subcategory, $product);
+	$Page = new Page($type, $category, $subcategory, $id);
 	$Page -> ConstructPage();
 
 	$PageContent = $Page -> PageContent;
