@@ -4,8 +4,9 @@
     "\\Engine",
     "\\Engine\\classes",
     "\\styles",
-    "\\templates"
+    "\\templates",
+    "\\templates\\blocks"
   ],
-  "SelectedNode": "\\Engine\\Engine.php",
+  "SelectedNode": "\\Engine\\classes\\Prods.php",
   "PreviewInSolutionExplorer": false
 }

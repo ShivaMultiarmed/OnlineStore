@@ -3,8 +3,11 @@
 	{
 		function __construct($category, $subcategory)
 		{	
+			global $MySqlI;
+
 			$this -> Category = $category;
 			$this -> SubCategory = $subcategory;
+			$this -> Russian = $MySqlI -> query("SELECT `russian` FROM `subcategories` WHERE name = \"" . $subcategory . "\";") -> fetch_assoc()["russian"];
 		}
 		function prod($id, $name, $price) // russian name from table
 		{

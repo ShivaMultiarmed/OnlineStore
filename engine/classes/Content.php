@@ -16,7 +16,10 @@
 			switch ($this -> Type)
 			{
 				case "catalog":
-					$this -> Content = $this -> createSection();
+					$this -> Content = $this -> createCategoryCatalog();
+				break;
+				case "subcatalog":
+					$this -> Content = $this -> createSubCatalog();
 				break;
 				case "home":
 					
@@ -27,17 +30,29 @@
 			}
 		}
 
-		public function createCatalog() 
+		public function createCategoryCatalog()
 		{
-				$catalogContent = file_get_contents("templates/blocks/section.html");
+			global $MySqlI;
+			$categoryId = $MySqlI -> query("SELECT `id` FROM `categories` WHERE `name` = \"" . $this -> Category . "\";") -> fetch_assoc()["id"];
+			$listSubCategories = $MySqlI -> query("SELECT `subcategories`.`russian`, `subcategories`.name as name, subcategories.id FROM `subcategories` INNER JOIN `categories` ON `subcategories`.`categoryId` = `categories`.`id` WHERE `categories`.id = " . $categoryId . ";");
+			while ($cursubcategory = $listSubCategories->fetch_assoc())
+			{
+				$WholeCatalog .= $this -> createSubCatalog($this -> Category, $cursubcategory["name"]);
+			}
+			return $WholeCatalog;
+		}
 
-				$Prods = new Prods($this -> Category,$this -> SubCategory);
+		public function createSubCatalog($category, $subcategory) 
+		{
+				$subCatalogContent = file_get_contents("templates/blocks/section.html");
+
+				$Prods = new Prods($category,$subcategory);
 				$Prods -> createProdsList();
 				$products = $Prods -> Content;
 				
-				$catalogContent = str_replace("[SECTIONTITLE]", $this-> Russian, $catalogContent);
-				$catalogContent = str_replace("[SECTIONCONTENT]", $products, $catalogContent);
-				return $catalogContent;
+				$subCatalogContent = str_replace("[SECTIONTITLE]", $Prods -> Russian, $subCatalogContent);
+				$subCatalogContent = str_replace("[SECTIONCONTENT]", $products, $subCatalogContent);
+				return $subCatalogContent;
 		}
 
 		public function createProduct()
